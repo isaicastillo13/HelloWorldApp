@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MyCounter extends StatefulWidget {
-  const MyCounter({super.key});
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({super.key});
 
   @override
-  State<MyCounter> createState() => _MyCounterState();
+  State<CounterScreen> createState() => _CounterScreen();
 }
 
 
 
-class _MyCounterState extends State<MyCounter> {
+class _CounterScreen extends State<CounterScreen> {
   int _counter = 0;
 
   @override
@@ -26,10 +26,10 @@ class _MyCounterState extends State<MyCounter> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FlutterLogo(size: 50),
-            Text('$_counter', style: TextStyle( fontSize: 160, fontWeight: FontWeight.w100),),
-            Text('Clicks', 
-            style: TextStyle(
+            const FlutterLogo(size: 50),
+            Text('$_counter', style: const TextStyle( fontSize: 160, fontWeight: FontWeight.w100),),
+            Text('Click${_counter == 1 ? '' : 's'}', 
+            style: const TextStyle(
               fontSize: 25, 
               fontWeight: FontWeight.w200
               ),
@@ -39,41 +39,58 @@ class _MyCounterState extends State<MyCounter> {
         ),
       ),
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _counter++;
-          });
-          // Handle button tap
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.plus_one),
-      ),
-
-
-
-
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: const <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.business),
-      //       label: 'Business',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.school),
-      //       label: 'School',
-      //     ),
-      //   ],
-      //   currentIndex: 0,
-      //   selectedItemColor: Colors.amber[800],
-      //   onTap: (index) {
-      //     // Handle item tap
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     setState(() {
+      //       _counter++;
+      //     });
       //   },
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.plus_one),
       // ),
+
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+
+        children: [
+          
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                _counter++;
+              });
+            },
+            tooltip: 'Increment',
+            child: const Icon(Icons.plus_one),
+          ),
+          const SizedBox(height: 10),
+
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                if (_counter > 0){
+                  _counter--;
+                } else{
+                  _counter = 0;
+                }
+              });
+            },
+            tooltip: 'Decrement',
+            child: const Icon(Icons.exposure_minus_1),
+          ),
+          const SizedBox(height: 10),
+
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                _counter = 0;
+              });
+            },
+            tooltip: 'Reset',
+            child: const Icon(Icons.refresh),
+          ),      
+        ],
+      ),
     );
   }
 }
