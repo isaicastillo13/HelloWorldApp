@@ -79,6 +79,32 @@ class _CounterFunction extends State<CounterFunction> {
 
         ],
       ),
+
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.plus_one),
+      //       label: 'Increment',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.exposure_minus_1),
+      //       label: 'Decrement'
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.rotate_left_sharp),
+      //       label: 'Reset'
+      //     ),
+      //   ],
+      //   onTap: (index) {
+      //     if (index == 0) {
+      //       _increment();
+      //     } else if (index == 1) {
+      //       _decrement();
+      //     } else if (index == 2) {
+      //       _reset();
+      //     }
+      //   },
+      // ),
     );
   }
 }
